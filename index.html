@@ -181,10 +181,10 @@
                 }
             });
 
-           /*  document.querySelector('.n-update').addEventListener('click',function(e){
+            document.querySelector('.n-update').addEventListener('click',function(e){
                 //alert('okokok');
                 e.preventDefault();
-
+                swal("Good job!", "Book information Updated Succefully!", "success");
                 console.log(document.querySelector('.a_title').value);
                 let title = document.querySelector('.n-title').value;
                 let description = document.querySelector('.n-description').value;
@@ -212,15 +212,15 @@
                 })
 
                      
-            }); */
-            document.querySelector('.n-update').addEventListener('click',function(e){
+            });
+           /*  document.querySelector('.n-update').addEventListener('click',function(e){
                 e.preventDefault();
                 //alert('OKOKOKOKOKO');
-                //Now call the api request
 
-                //Before calling the api request we must collect all the updated information
-                console.log(document.querySelector('.n-title').value); // Get
-                let title = document.querySelector('.n-title').value ; // SET
+                swal("Good job!", "Book information Updated Succefully!", "success");
+
+                 console.log(document.querySelector('.n-title').value); 
+                let title = document.querySelector('.n-title').value ; 
                 let description = document.querySelector('.n-description').value ;
                 let excerpt = document.querySelector('.n-excerpt').value ;
                 let pageCount = document.querySelector('.n-pageCount').value ;
@@ -233,21 +233,21 @@
                             "excerpt": excerpt,
                             "publishDate": "2021-11-17T04:11:02.011Z"
                      }
-                //Finally make the put request api call
+                
                 $.ajax({
                     ...myurlobj,
                     url:myurlobj.url+'/api/v1/Books/'+bookid,
-                    type:"PUT",//Completely overwriting the previous value,
+                    type:"PUT",
                     data: JSON.stringify(mydata),
                     dataType: "json",
                     contentType: "application/json",
                     success:function(result,status,xhr){
                         swal("Good job!", "Book information Updated Succefully!", "success");
                     }
-                });
+                }); 
                 //alert('okok');
             });
-
+ */
 
             document.addEventListener('click',function(e){ //e = event
                 console.log(e);
