@@ -252,22 +252,39 @@
             document.addEventListener('click',function(e){ //e = event
                 console.log(e);
                 if(e.target.classList.contains('n-delbtn')){
+                  
                     console.log('yes');
                     //Now 
                     
                     //2 Call the delete API
-                    var userid = e.target.closest('tr').querySelector('td:first-child').innerHTML;
-                    
+                    var bookid = e.target.closest('tr').querySelector('td:first-child').innerHTML;
+                    swal({
+                          title: "Are you sure?",
+                          text: "Once deleted, you will not be able to recover this imaginary file!",
+                          icon: "warning",
+                          buttons: true,
+                          dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                          if (willDelete) {
+                            swal("Poof! Your imaginary file has been deleted!", {
+                              icon: "success",
+                            });
+                          } else {
+                            swal("Your imaginary file is safe!");
+                          }
+                      });
                     //1. Remove the current row from the DOM
-                    e.target.closest('tr').remove(); //Remove form DOM
+                    e.target.closest('tr').remove(); //Remove form DOM.
+                   
                     $.ajax({
                         ...myobj,
-                        url:myobj.url+'/api/v1/Books'+userid,//Pre Value Reuse and Modify
-                        type:"DELETE",//Prev Value Complete Overrwite,
+                        url:myobj.url+'/api/v1/Books'+bookid,
+                        type:"DELETE",
                         beforeSend:function(){},
                         success:function(result,status,xhr){
                             //alert("Delete Successfully");
-                            swal("Good job!", "Book information deleted Succefully!", "error");
+                           
                         },
                         error:function(){},
                         complete:function(){}
